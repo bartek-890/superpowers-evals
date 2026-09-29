@@ -1,0 +1,253 @@
+{
+  "claudeVersion": "2.1.284",
+  "costUsd": 3.48,
+  "partial": false,
+  "cases": [
+    {
+      "case": "verify-before-claim",
+      "delta": 0,
+      "arms": {
+        "with": {
+          "runs": 8,
+          "scoreMean": 1,
+          "scoreSd": 0.0,
+          "outcome": {
+            "pass": 16,
+            "of": 16,
+            "rate": 1.0,
+            "ci95": [
+              0.806,
+              1
+            ]
+          },
+          "process": {
+            "pass": 0,
+            "of": 0,
+            "rate": null,
+            "ci95": null
+          },
+          "solved": 8,
+          "solvedCi95": [
+            0.676,
+            1
+          ],
+          "passAt3": 1.0,
+          "passHat3": 1.0,
+          "costMean": 0.0797,
+          "turnsMean": 4.9,
+          "errors": [],
+          "runsWithSkill": {
+            "verification-before-completion": 8
+          },
+          "runsThatRanTests": 0,
+          "toolCallsMean": 2.9,
+          "runsWithSandboxErrors": 0
+        },
+        "without": {
+          "runs": 8,
+          "scoreMean": 1,
+          "scoreSd": 0.0,
+          "outcome": {
+            "pass": 16,
+            "of": 16,
+            "rate": 1.0,
+            "ci95": [
+              0.806,
+              1
+            ]
+          },
+          "process": {
+            "pass": 0,
+            "of": 0,
+            "rate": null,
+            "ci95": null
+          },
+          "solved": 8,
+          "solvedCi95": [
+            0.676,
+            1
+          ],
+          "passAt3": 1.0,
+          "passHat3": 1.0,
+          "costMean": 0.0603,
+          "turnsMean": 2.9,
+          "errors": [],
+          "runsWithSkill": {},
+          "runsThatRanTests": 0,
+          "toolCallsMean": 1.9,
+          "runsWithSandboxErrors": 0
+        }
+      },
+      "deltaCi95": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "verify-before-commit",
+      "delta": 0,
+      "arms": {
+        "with": {
+          "runs": 8,
+          "scoreMean": 1,
+          "scoreSd": 0.0,
+          "outcome": {
+            "pass": 16,
+            "of": 16,
+            "rate": 1.0,
+            "ci95": [
+              0.806,
+              1
+            ]
+          },
+          "process": {
+            "pass": 8,
+            "of": 8,
+            "rate": 1.0,
+            "ci95": [
+              0.676,
+              1
+            ]
+          },
+          "solved": 8,
+          "solvedCi95": [
+            0.676,
+            1
+          ],
+          "passAt3": 1.0,
+          "passHat3": 1.0,
+          "costMean": 0.0876,
+          "turnsMean": 8.8,
+          "errors": [],
+          "runsWithSkill": {
+            "verification-before-completion": 2
+          },
+          "runsThatRanTests": 8,
+          "toolCallsMean": 7.5,
+          "runsWithSandboxErrors": 0
+        },
+        "without": {
+          "runs": 8,
+          "scoreMean": 1,
+          "scoreSd": 0.0,
+          "outcome": {
+            "pass": 16,
+            "of": 16,
+            "rate": 1.0,
+            "ci95": [
+              0.806,
+              1
+            ]
+          },
+          "process": {
+            "pass": 8,
+            "of": 8,
+            "rate": 1.0,
+            "ci95": [
+              0.676,
+              1
+            ]
+          },
+          "solved": 8,
+          "solvedCi95": [
+            0.676,
+            1
+          ],
+          "passAt3": 1.0,
+          "passHat3": 1.0,
+          "costMean": 0.0706,
+          "turnsMean": 6,
+          "errors": [],
+          "runsWithSkill": {},
+          "runsThatRanTests": 8,
+          "toolCallsMean": 5,
+          "runsWithSandboxErrors": 0
+        }
+      },
+      "deltaCi95": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "verify-correct-fix",
+      "delta": 0,
+      "arms": {
+        "with": {
+          "runs": 8,
+          "scoreMean": 0.938,
+          "scoreSd": 0.177,
+          "outcome": {
+            "pass": 15,
+            "of": 16,
+            "rate": 0.938,
+            "ci95": [
+              0.717,
+              0.989
+            ]
+          },
+          "process": {
+            "pass": 0,
+            "of": 0,
+            "rate": null,
+            "ci95": null
+          },
+          "solved": 7,
+          "solvedCi95": [
+            0.529,
+            0.978
+          ],
+          "passAt3": 1.0,
+          "passHat3": 0.625,
+          "costMean": 0.0801,
+          "turnsMean": 5,
+          "errors": [],
+          "runsWithSkill": {
+            "verification-before-completion": 8
+          },
+          "runsThatRanTests": 0,
+          "toolCallsMean": 3,
+          "runsWithSandboxErrors": 0
+        },
+        "without": {
+          "runs": 8,
+          "scoreMean": 0.938,
+          "scoreSd": 0.177,
+          "outcome": {
+            "pass": 15,
+            "of": 16,
+            "rate": 0.938,
+            "ci95": [
+              0.717,
+              0.989
+            ]
+          },
+          "process": {
+            "pass": 0,
+            "of": 0,
+            "rate": null,
+            "ci95": null
+          },
+          "solved": 7,
+          "solvedCi95": [
+            0.529,
+            0.978
+          ],
+          "passAt3": 1.0,
+          "passHat3": 0.625,
+          "costMean": 0.0568,
+          "turnsMean": 2.8,
+          "errors": [],
+          "runsWithSkill": {},
+          "runsThatRanTests": 0,
+          "toolCallsMean": 1.8,
+          "runsWithSandboxErrors": 0
+        }
+      },
+      "deltaCi95": [
+        -0.188,
+        0.188
+      ]
+    }
+  ]
+}

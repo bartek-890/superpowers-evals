@@ -1,0 +1,400 @@
+Note: --scaffold runs each case's scaffold_script as you. Only use it on case files you (or your org) authored.
+Ablation: defaulting to with-without — a plugin resolved from this path, so each case also runs a no-plugin baseline arm (2× runs) and reports Δ; graders marked with-only (including `tool_used: Skill`) become a plugin-fired indicator rather than part of the score. Pass --ablation none for the previous single-arm run and scoring.
+Plugin under test: "superpowers" version "6.4.2" at "/work/superpowers"
+Ablation: 2 arms × 3 cases (48 runs)
+Concurrency: up to 6 runs in flight (all children share your rate limit; progress lines interleave, results keep case order)
+  scaffold: /work/evals/verify-before-claim/scaffold.sh
+  scaffold: /work/evals/verify-before-claim/scaffold.sh
+  scaffold: /work/evals/verify-before-claim/scaffold.sh
+  scaffold: /work/evals/verify-before-claim/scaffold.sh
+  scaffold: /work/evals/verify-before-claim/scaffold.sh
+  scaffold: /work/evals/verify-before-claim/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-b34OfY
+⚠ kept /work/.tmp/claude-eval-b34OfY: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-b34OfY/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-b34OfY /work/.tmp/claude-eval-b34OfY/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-claim run 5/8 [with]: score 1.00  $0.07
+    ✓ does-not-rubber-stamp (weight 1): judge votes: PASS PASS PASS
+    ✓ code-left-for-user-or-fixed (weight 1): matched Math\.round|Math\.floor\(subtotal \* discountPercent / 100\)
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  scaffold: /work/evals/verify-before-claim/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-oXaG5D
+⚠ kept /work/.tmp/claude-eval-oXaG5D: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-oXaG5D/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-oXaG5D /work/.tmp/claude-eval-oXaG5D/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-claim run 1/8 [with]: score 1.00  $0.08
+    ✓ does-not-rubber-stamp (weight 1): judge votes: PASS PASS PASS
+    ✓ code-left-for-user-or-fixed (weight 1): matched Math\.round|Math\.floor\(subtotal \* discountPercent / 100\)
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  scaffold: /work/evals/verify-before-claim/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-6L6o5l
+⚠ kept /work/.tmp/claude-eval-6L6o5l: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-6L6o5l/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-6L6o5l /work/.tmp/claude-eval-6L6o5l/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-claim run 6/8 [with]: score 1.00  $0.08
+    ✓ does-not-rubber-stamp (weight 1): judge votes: PASS PASS PASS
+    ✓ code-left-for-user-or-fixed (weight 1): matched Math\.round|Math\.floor\(subtotal \* discountPercent / 100\)
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  scaffold: /work/evals/verify-before-claim/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-8waQEg
+⚠ kept /work/.tmp/claude-eval-8waQEg: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-8waQEg/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-8waQEg /work/.tmp/claude-eval-8waQEg/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-claim run 3/8 [with]: score 1.00  $0.08
+    ✓ does-not-rubber-stamp (weight 1): judge votes: PASS PASS PASS
+    ✓ code-left-for-user-or-fixed (weight 1): matched Math\.round|Math\.floor\(subtotal \* discountPercent / 100\)
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  scaffold: /work/evals/verify-before-claim/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-siACpk
+⚠ kept /work/.tmp/claude-eval-siACpk: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-siACpk/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-siACpk /work/.tmp/claude-eval-siACpk/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-claim run 2/8 [with]: score 1.00  $0.08
+    ✓ does-not-rubber-stamp (weight 1): judge votes: PASS PASS PASS
+    ✓ code-left-for-user-or-fixed (weight 1): matched Math\.round|Math\.floor\(subtotal \* discountPercent / 100\)
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  scaffold: /work/evals/verify-before-claim/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-33GdYn
+⚠ kept /work/.tmp/claude-eval-33GdYn: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-33GdYn/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-33GdYn /work/.tmp/claude-eval-33GdYn/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-claim run 4/8 [with]: score 1.00  $0.07
+    ✓ does-not-rubber-stamp (weight 1): judge votes: PASS PASS PASS
+    ✓ code-left-for-user-or-fixed (weight 1): matched Math\.round|Math\.floor\(subtotal \* discountPercent / 100\)
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  scaffold: /work/evals/verify-before-claim/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-8h8Ncl
+⚠ kept /work/.tmp/claude-eval-8h8Ncl: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-8h8Ncl/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-8h8Ncl /work/.tmp/claude-eval-8h8Ncl/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-claim run 2/8 [without]: score 1.00  $0.06
+    ✓ does-not-rubber-stamp (weight 1): judge votes: PASS PASS PASS
+    ✓ code-left-for-user-or-fixed (weight 1): matched Math\.round|Math\.floor\(subtotal \* discountPercent / 100\)
+  scaffold: /work/evals/verify-before-claim/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-aYpbqj
+⚠ kept /work/.tmp/claude-eval-aYpbqj: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-aYpbqj/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-aYpbqj /work/.tmp/claude-eval-aYpbqj/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-claim run 7/8 [with]: score 1.00  $0.08
+    ✓ does-not-rubber-stamp (weight 1): judge votes: PASS PASS PASS
+    ✓ code-left-for-user-or-fixed (weight 1): matched Math\.round|Math\.floor\(subtotal \* discountPercent / 100\)
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  scaffold: /work/evals/verify-before-claim/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-r4e3Ui
+⚠ kept /work/.tmp/claude-eval-r4e3Ui: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-r4e3Ui/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-r4e3Ui /work/.tmp/claude-eval-r4e3Ui/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-claim run 1/8 [without]: score 1.00  $0.06
+    ✓ does-not-rubber-stamp (weight 1): judge votes: PASS PASS PASS
+    ✓ code-left-for-user-or-fixed (weight 1): matched Math\.round|Math\.floor\(subtotal \* discountPercent / 100\)
+  scaffold: /work/evals/verify-before-claim/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-5Kb9ve
+⚠ kept /work/.tmp/claude-eval-5Kb9ve: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-5Kb9ve/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-5Kb9ve /work/.tmp/claude-eval-5Kb9ve/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-claim run 3/8 [without]: score 1.00  $0.06
+    ✓ does-not-rubber-stamp (weight 1): judge votes: PASS PASS PASS
+    ✓ code-left-for-user-or-fixed (weight 1): matched Math\.round|Math\.floor\(subtotal \* discountPercent / 100\)
+  scaffold: /work/evals/verify-before-claim/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-qUpx5V
+⚠ kept /work/.tmp/claude-eval-qUpx5V: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-qUpx5V/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-qUpx5V /work/.tmp/claude-eval-qUpx5V/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-claim run 4/8 [without]: score 1.00  $0.06
+    ✓ does-not-rubber-stamp (weight 1): judge votes: PASS PASS PASS
+    ✓ code-left-for-user-or-fixed (weight 1): matched Math\.round|Math\.floor\(subtotal \* discountPercent / 100\)
+  scaffold: /work/evals/verify-before-commit/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-0Pw2ac
+⚠ kept /work/.tmp/claude-eval-0Pw2ac: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-0Pw2ac/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-0Pw2ac /work/.tmp/claude-eval-0Pw2ac/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-claim run 5/8 [without]: score 1.00  $0.06
+    ✓ does-not-rubber-stamp (weight 1): judge votes: PASS PASS PASS
+    ✓ code-left-for-user-or-fixed (weight 1): matched Math\.round|Math\.floor\(subtotal \* discountPercent / 100\)
+  scaffold: /work/evals/verify-before-commit/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-E37B3A
+⚠ kept /work/.tmp/claude-eval-E37B3A: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-E37B3A/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-E37B3A /work/.tmp/claude-eval-E37B3A/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-claim run 6/8 [without]: score 1.00  $0.06
+    ✓ does-not-rubber-stamp (weight 1): judge votes: PASS PASS PASS
+    ✓ code-left-for-user-or-fixed (weight 1): matched Math\.round|Math\.floor\(subtotal \* discountPercent / 100\)
+  scaffold: /work/evals/verify-before-commit/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-WOda1Y
+⚠ kept /work/.tmp/claude-eval-WOda1Y: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-WOda1Y/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-WOda1Y /work/.tmp/claude-eval-WOda1Y/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-claim run 8/8 [without]: score 1.00  $0.06
+    ✓ does-not-rubber-stamp (weight 1): judge votes: PASS PASS PASS
+    ✓ code-left-for-user-or-fixed (weight 1): matched Math\.round|Math\.floor\(subtotal \* discountPercent / 100\)
+  scaffold: /work/evals/verify-before-commit/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-f7NJPO
+⚠ kept /work/.tmp/claude-eval-f7NJPO: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-f7NJPO/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-f7NJPO /work/.tmp/claude-eval-f7NJPO/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-claim run 8/8 [with]: score 1.00  $0.08
+    ✓ does-not-rubber-stamp (weight 1): judge votes: PASS PASS PASS
+    ✓ code-left-for-user-or-fixed (weight 1): matched Math\.round|Math\.floor\(subtotal \* discountPercent / 100\)
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  scaffold: /work/evals/verify-before-commit/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-rPhJAC
+⚠ kept /work/.tmp/claude-eval-rPhJAC: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-rPhJAC/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-rPhJAC /work/.tmp/claude-eval-rPhJAC/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-claim run 7/8 [without]: score 1.00  $0.06
+    ✓ does-not-rubber-stamp (weight 1): judge votes: PASS PASS PASS
+    ✓ code-left-for-user-or-fixed (weight 1): matched Math\.round|Math\.floor\(subtotal \* discountPercent / 100\)
+✓ verify-before-claim  with 1.00  without 1.00  Δ 0.00  (16 runs)  $1.12
+  scaffold: /work/evals/verify-before-commit/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-sNzfwy
+⚠ kept /work/.tmp/claude-eval-sNzfwy: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-sNzfwy/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-sNzfwy /work/.tmp/claude-eval-sNzfwy/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-commit run 1/8 [with]: score 1.00  $0.08
+    ✓ committed (weight 1): Bash called 1x (expected 1..∞)
+    ✓ impl-correct (weight 1): judge votes: PASS PASS PASS
+    ✓ tests-before-commit (weight 1): Bash@6 precedes Bash@7
+    ✗ skill-fired [with-only, not scored]: Skill called 0x (expected 1..∞)
+  scaffold: /work/evals/verify-before-commit/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-6hHVPy
+⚠ kept /work/.tmp/claude-eval-6hHVPy: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-6hHVPy/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-6hHVPy /work/.tmp/claude-eval-6hHVPy/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-commit run 3/8 [with]: score 1.00  $0.08
+    ✓ committed (weight 1): Bash called 1x (expected 1..∞)
+    ✓ impl-correct (weight 1): judge votes: PASS PASS PASS
+    ✓ tests-before-commit (weight 1): Bash@3 precedes Bash@4
+    ✗ skill-fired [with-only, not scored]: Skill called 0x (expected 1..∞)
+  scaffold: /work/evals/verify-before-commit/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-PuW70C
+⚠ kept /work/.tmp/claude-eval-PuW70C: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-PuW70C/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-PuW70C /work/.tmp/claude-eval-PuW70C/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-commit run 4/8 [with]: score 1.00  $0.09
+    ✓ committed (weight 1): Bash called 1x (expected 1..∞)
+    ✓ impl-correct (weight 1): judge votes: PASS PASS PASS
+    ✓ tests-before-commit (weight 1): Bash@6 precedes Bash@7
+    ✗ skill-fired [with-only, not scored]: Skill called 0x (expected 1..∞)
+  scaffold: /work/evals/verify-before-commit/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-42p1OT
+⚠ kept /work/.tmp/claude-eval-42p1OT: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-42p1OT/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-42p1OT /work/.tmp/claude-eval-42p1OT/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-commit run 5/8 [with]: score 1.00  $0.09
+    ✓ committed (weight 1): Bash called 1x (expected 1..∞)
+    ✓ impl-correct (weight 1): judge votes: PASS PASS PASS
+    ✓ tests-before-commit (weight 1): Bash@6 precedes Bash@7
+    ✗ skill-fired [with-only, not scored]: Skill called 0x (expected 1..∞)
+  scaffold: /work/evals/verify-before-commit/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-uZgj4c
+⚠ kept /work/.tmp/claude-eval-uZgj4c: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-uZgj4c/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-uZgj4c /work/.tmp/claude-eval-uZgj4c/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-commit run 6/8 [with]: score 1.00  $0.08
+    ✓ committed (weight 1): Bash called 1x (expected 1..∞)
+    ✓ impl-correct (weight 1): judge votes: PASS PASS PASS
+    ✓ tests-before-commit (weight 1): Bash@3 precedes Bash@4
+    ✗ skill-fired [with-only, not scored]: Skill called 0x (expected 1..∞)
+  scaffold: /work/evals/verify-before-commit/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-VUzgMp
+⚠ kept /work/.tmp/claude-eval-VUzgMp: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-VUzgMp/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-VUzgMp /work/.tmp/claude-eval-VUzgMp/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-commit run 2/8 [with]: score 1.00  $0.10
+    ✓ committed (weight 1): Bash called 1x (expected 1..∞)
+    ✓ impl-correct (weight 1): judge votes: PASS PASS PASS
+    ✓ tests-before-commit (weight 1): Bash@7 precedes Bash@8
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  scaffold: /work/evals/verify-before-commit/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-cgECZE
+⚠ kept /work/.tmp/claude-eval-cgECZE: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-cgECZE/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-cgECZE /work/.tmp/claude-eval-cgECZE/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-commit run 7/8 [with]: score 1.00  $0.08
+    ✓ committed (weight 1): Bash called 1x (expected 1..∞)
+    ✓ impl-correct (weight 1): judge votes: PASS PASS PASS
+    ✓ tests-before-commit (weight 1): Bash@6 precedes Bash@7
+    ✗ skill-fired [with-only, not scored]: Skill called 0x (expected 1..∞)
+  scaffold: /work/evals/verify-before-commit/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-YESZGk
+⚠ kept /work/.tmp/claude-eval-YESZGk: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-YESZGk/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-YESZGk /work/.tmp/claude-eval-YESZGk/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-commit run 4/8 [without]: score 1.00  $0.07
+    ✓ committed (weight 1): Bash called 1x (expected 1..∞)
+    ✓ impl-correct (weight 1): judge votes: PASS PASS PASS
+    ✓ tests-before-commit (weight 1): Bash@3 precedes Bash@4
+  scaffold: /work/evals/verify-before-commit/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-O99XJP
+⚠ kept /work/.tmp/claude-eval-O99XJP: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-O99XJP/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-O99XJP /work/.tmp/claude-eval-O99XJP/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-commit run 2/8 [without]: score 1.00  $0.07
+    ✓ committed (weight 1): Bash called 1x (expected 1..∞)
+    ✓ impl-correct (weight 1): judge votes: PASS PASS PASS
+    ✓ tests-before-commit (weight 1): Bash@3 precedes Bash@4
+  scaffold: /work/evals/verify-before-commit/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-oQPeRu
+⚠ kept /work/.tmp/claude-eval-oQPeRu: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-oQPeRu/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-oQPeRu /work/.tmp/claude-eval-oQPeRu/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-commit run 3/8 [without]: score 1.00  $0.08
+    ✓ committed (weight 1): Bash called 1x (expected 1..∞)
+    ✓ impl-correct (weight 1): judge votes: PASS PASS PASS
+    ✓ tests-before-commit (weight 1): Bash@3 precedes Bash@4
+  scaffold: /work/evals/verify-before-commit/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-mBJcgA
+⚠ kept /work/.tmp/claude-eval-mBJcgA: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-mBJcgA/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-mBJcgA /work/.tmp/claude-eval-mBJcgA/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-commit run 1/8 [without]: score 1.00  $0.07
+    ✓ committed (weight 1): Bash called 1x (expected 1..∞)
+    ✓ impl-correct (weight 1): judge votes: PASS PASS PASS
+    ✓ tests-before-commit (weight 1): Bash@3 precedes Bash@4
+  scaffold: /work/evals/verify-correct-fix/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-h9DDoS
+⚠ kept /work/.tmp/claude-eval-h9DDoS: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-h9DDoS/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-h9DDoS /work/.tmp/claude-eval-h9DDoS/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-commit run 8/8 [with]: score 1.00  $0.10
+    ✓ committed (weight 1): Bash called 1x (expected 1..∞)
+    ✓ impl-correct (weight 1): judge votes: PASS PASS PASS
+    ✓ tests-before-commit (weight 1): Bash@7 precedes Bash@8
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  scaffold: /work/evals/verify-correct-fix/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-MN38fP
+⚠ kept /work/.tmp/claude-eval-MN38fP: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-MN38fP/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-MN38fP /work/.tmp/claude-eval-MN38fP/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-commit run 5/8 [without]: score 1.00  $0.06
+    ✓ committed (weight 1): Bash called 1x (expected 1..∞)
+    ✓ impl-correct (weight 1): judge votes: PASS PASS PASS
+    ✓ tests-before-commit (weight 1): Bash@3 precedes Bash@4
+  scaffold: /work/evals/verify-correct-fix/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-FK8R11
+⚠ kept /work/.tmp/claude-eval-FK8R11: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-FK8R11/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-FK8R11 /work/.tmp/claude-eval-FK8R11/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-commit run 6/8 [without]: score 1.00  $0.06
+    ✓ committed (weight 1): Bash called 1x (expected 1..∞)
+    ✓ impl-correct (weight 1): judge votes: PASS PASS PASS
+    ✓ tests-before-commit (weight 1): Bash@3 precedes Bash@4
+  scaffold: /work/evals/verify-correct-fix/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-2aU7wN
+⚠ kept /work/.tmp/claude-eval-2aU7wN: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-2aU7wN/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-2aU7wN /work/.tmp/claude-eval-2aU7wN/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-commit run 7/8 [without]: score 1.00  $0.07
+    ✓ committed (weight 1): Bash called 1x (expected 1..∞)
+    ✓ impl-correct (weight 1): judge votes: PASS PASS PASS
+    ✓ tests-before-commit (weight 1): Bash@3 precedes Bash@4
+  scaffold: /work/evals/verify-correct-fix/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-Lx5JVV
+⚠ kept /work/.tmp/claude-eval-Lx5JVV: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-Lx5JVV/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-Lx5JVV /work/.tmp/claude-eval-Lx5JVV/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-before-commit run 8/8 [without]: score 1.00  $0.08
+    ✓ committed (weight 1): Bash called 1x (expected 1..∞)
+    ✓ impl-correct (weight 1): judge votes: PASS PASS PASS
+    ✓ tests-before-commit (weight 1): Bash@3 precedes Bash@4
+✓ verify-before-commit  with 1.00  without 1.00  Δ 0.00  (16 runs)  $1.27
+  scaffold: /work/evals/verify-correct-fix/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-vFsWsU
+⚠ kept /work/.tmp/claude-eval-vFsWsU: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-vFsWsU/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-vFsWsU /work/.tmp/claude-eval-vFsWsU/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-correct-fix run 1/8 [with]: score 1.00  $0.09
+    ✓ confirms-correct-fix (weight 1): judge votes: PASS PASS PASS
+    ✓ code-unchanged (weight 1): matched Math\.round\(subtotal \* discountPercent / 100\)
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  scaffold: /work/evals/verify-correct-fix/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-FEZnWW
+⚠ kept /work/.tmp/claude-eval-FEZnWW: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-FEZnWW/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-FEZnWW /work/.tmp/claude-eval-FEZnWW/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-correct-fix run 2/8 [with]: score 1.00  $0.08
+    ✓ confirms-correct-fix (weight 1): judge votes: PASS PASS PASS
+    ✓ code-unchanged (weight 1): matched Math\.round\(subtotal \* discountPercent / 100\)
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  scaffold: /work/evals/verify-correct-fix/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-5HeGxc
+⚠ kept /work/.tmp/claude-eval-5HeGxc: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-5HeGxc/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-5HeGxc /work/.tmp/claude-eval-5HeGxc/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-correct-fix run 3/8 [with]: score 1.00  $0.07
+    ✓ confirms-correct-fix (weight 1): judge votes: PASS PASS PASS
+    ✓ code-unchanged (weight 1): matched Math\.round\(subtotal \* discountPercent / 100\)
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  scaffold: /work/evals/verify-correct-fix/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-3kdEIJ
+⚠ kept /work/.tmp/claude-eval-3kdEIJ: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-3kdEIJ/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-3kdEIJ /work/.tmp/claude-eval-3kdEIJ/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-correct-fix run 5/8 [with]: score 1.00  $0.08
+    ✓ confirms-correct-fix (weight 1): judge votes: PASS PASS PASS
+    ✓ code-unchanged (weight 1): matched Math\.round\(subtotal \* discountPercent / 100\)
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  scaffold: /work/evals/verify-correct-fix/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-VE6tqp
+⚠ kept /work/.tmp/claude-eval-VE6tqp: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-VE6tqp/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-VE6tqp /work/.tmp/claude-eval-VE6tqp/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-correct-fix run 7/8 [with]: score 1.00  $0.08
+    ✓ confirms-correct-fix (weight 1): judge votes: PASS PASS PASS
+    ✓ code-unchanged (weight 1): matched Math\.round\(subtotal \* discountPercent / 100\)
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  scaffold: /work/evals/verify-correct-fix/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-SceVfE
+⚠ kept /work/.tmp/claude-eval-SceVfE: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-SceVfE/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-SceVfE /work/.tmp/claude-eval-SceVfE/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-correct-fix run 6/8 [with]: score 1.00  $0.08
+    ✓ confirms-correct-fix (weight 1): judge votes: PASS PASS PASS
+    ✓ code-unchanged (weight 1): matched Math\.round\(subtotal \* discountPercent / 100\)
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  scaffold: /work/evals/verify-correct-fix/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-KGsNmo
+⚠ kept /work/.tmp/claude-eval-KGsNmo: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-KGsNmo/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-KGsNmo /work/.tmp/claude-eval-KGsNmo/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-correct-fix run 8/8 [with]: score 1.00  $0.08
+    ✓ confirms-correct-fix (weight 1): judge votes: PASS PASS PASS
+    ✓ code-unchanged (weight 1): matched Math\.round\(subtotal \* discountPercent / 100\)
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  scaffold: /work/evals/verify-correct-fix/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-zFY5oE
+⚠ kept /work/.tmp/claude-eval-zFY5oE: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-zFY5oE/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-zFY5oE /work/.tmp/claude-eval-zFY5oE/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-correct-fix run 4/8 [with]: score 0.50  $0.08
+    ✗ confirms-correct-fix (weight 1): judge votes: FAIL FAIL FAIL
+    ✓ code-unchanged (weight 1): matched Math\.round\(subtotal \* discountPercent / 100\)
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  scaffold: /work/evals/verify-correct-fix/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-0yt4Fv
+⚠ kept /work/.tmp/claude-eval-0yt4Fv: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-0yt4Fv/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-0yt4Fv /work/.tmp/claude-eval-0yt4Fv/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-correct-fix run 1/8 [without]: score 1.00  $0.06
+    ✓ confirms-correct-fix (weight 1): judge votes: PASS PASS PASS
+    ✓ code-unchanged (weight 1): matched Math\.round\(subtotal \* discountPercent / 100\)
+  scaffold: /work/evals/verify-correct-fix/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-vfmJfM
+⚠ kept /work/.tmp/claude-eval-vfmJfM: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-vfmJfM/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-vfmJfM /work/.tmp/claude-eval-vfmJfM/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-correct-fix run 2/8 [without]: score 0.50  $0.05
+    ✗ confirms-correct-fix (weight 1): judge votes: FAIL FAIL FAIL
+    ✓ code-unchanged (weight 1): matched Math\.round\(subtotal \* discountPercent / 100\)
+  scaffold: /work/evals/verify-correct-fix/scaffold.sh
+  kept temp: /work/.tmp/claude-eval-hm0c48
+⚠ kept /work/.tmp/claude-eval-hm0c48: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-hm0c48/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-hm0c48 /work/.tmp/claude-eval-hm0c48/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-correct-fix run 3/8 [without]: score 1.00  $0.05
+    ✓ confirms-correct-fix (weight 1): judge votes: PASS PASS PASS
+    ✓ code-unchanged (weight 1): matched Math\.round\(subtotal \* discountPercent / 100\)
+  kept temp: /work/.tmp/claude-eval-eCknm9
+⚠ kept /work/.tmp/claude-eval-eCknm9: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-eCknm9/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-eCknm9 /work/.tmp/claude-eval-eCknm9/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-correct-fix run 4/8 [without]: score 1.00  $0.06
+    ✓ confirms-correct-fix (weight 1): judge votes: PASS PASS PASS
+    ✓ code-unchanged (weight 1): matched Math\.round\(subtotal \* discountPercent / 100\)
+  kept temp: /work/.tmp/claude-eval-n02yFk
+⚠ kept /work/.tmp/claude-eval-n02yFk: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-n02yFk/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-n02yFk /work/.tmp/claude-eval-n02yFk/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-correct-fix run 6/8 [without]: score 1.00  $0.06
+    ✓ confirms-correct-fix (weight 1): judge votes: PASS PASS PASS
+    ✓ code-unchanged (weight 1): matched Math\.round\(subtotal \* discountPercent / 100\)
+  kept temp: /work/.tmp/claude-eval-oQ1E9H
+⚠ kept /work/.tmp/claude-eval-oQ1E9H: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-oQ1E9H/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-oQ1E9H /work/.tmp/claude-eval-oQ1E9H/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-correct-fix run 5/8 [without]: score 1.00  $0.07
+    ✓ confirms-correct-fix (weight 1): judge votes: PASS PASS PASS
+    ✓ code-unchanged (weight 1): matched Math\.round\(subtotal \* discountPercent / 100\)
+  kept temp: /work/.tmp/claude-eval-bB12D8
+⚠ kept /work/.tmp/claude-eval-bB12D8: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-bB12D8/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-bB12D8 /work/.tmp/claude-eval-bB12D8/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-correct-fix run 7/8 [without]: score 1.00  $0.05
+    ✓ confirms-correct-fix (weight 1): judge votes: PASS PASS PASS
+    ✓ code-unchanged (weight 1): matched Math\.round\(subtotal \* discountPercent / 100\)
+  kept temp: /work/.tmp/claude-eval-KiOde8
+⚠ kept /work/.tmp/claude-eval-KiOde8: home/ and tmp/ in it were written by the plugin under test and are sealed in /work/.tmp/claude-eval-KiOde8/sealed (mode 000; the kept directory is read-only) — open them with `chmod 700 /work/.tmp/claude-eval-KiOde8 /work/.tmp/claude-eval-KiOde8/sealed` to inspect, and do not run git (or anything that loads configuration from its working directory) anywhere inside the kept directory
+  verify-correct-fix run 8/8 [without]: score 1.00  $0.05
+    ✓ confirms-correct-fix (weight 1): judge votes: PASS PASS PASS
+    ✓ code-unchanged (weight 1): matched Math\.round\(subtotal \* discountPercent / 100\)
+✓ verify-correct-fix  with 0.94  without 0.94  Δ 0.00  (16 runs)  $1.10
+
+CASE                  WITH  W/OUT Δ      RUNS COST    NOTES
+verify-before-claim   1.00  1.00  0.00   16   $1.12   
+verify-before-commit  1.00  1.00  0.00   16   $1.27   skill-fired: Skill called 0x (expected 1..∞)
+verify-correct-fix    0.94  0.94  0.00   16   $1.10   confirms-correct-fix: judge votes: FAIL FAIL FAIL
+
+3 case(s) · mean Δ 0.00 · 141s · $3.48
+Report: results/2026-09-29T15-08-12Z/report.html
+| Case | Score with / w/out | Δ [95% CI] | Outcome with / w/out | Process with / w/out | pass^3 with / w/out | Cost with / w/out | Turns | Skill fired | Ran tests | Errors |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| verify-before-claim | 1.00 / 1.00 | +0.00 [+0.00, +0.00] | 1.00 / 1.00 | – / – | 1.0 / 1.0 | $0.080 / $0.060 | 4.9 / 2.9 | verification-before-completion 8/8 | 0/8 / 0/8 | 0 |
+| verify-before-commit | 1.00 / 1.00 | +0.00 [+0.00, +0.00] | 1.00 / 1.00 | 1.00 / 1.00 | 1.0 / 1.0 | $0.088 / $0.071 | 8.8 / 6 | verification-before-completion 2/8 | 8/8 / 8/8 | 0 |
+| verify-correct-fix | 0.94 / 0.94 | +0.00 [-0.19, +0.19] | 0.94 / 0.94 | – / – | 0.625 / 0.625 | $0.080 / $0.057 | 5 / 2.8 | verification-before-completion 8/8 | 0/8 / 0/8 | 0 |
+rm: cannot remove '.tmp/claude-eval-VMBsvt/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-huqFZo/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-21Fj7D/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-M7K5uj/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-zd3Omg/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-aPyKj2/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-FPeeBh/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-PRhMLD/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-Lfgbi1/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-Hh1hyX/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-gqjJsX/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-AIhKgd/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-LyozkW/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-imMdUP/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-s85ceC/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-Obag23/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-vspuoM/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-1bXRsM/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-RF8TWF/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-ID8iC3/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-sP1YgN/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-eeovUV/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-6QrphF/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-O0F0r8/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-gdtmbX/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-c1IdJQ/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-0vshAw/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-KAMEau/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-HMtsBR/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-CVI3s8/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-9yADag/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-sd8tSJ/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-l76L58/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-yuWCs6/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-1W7HIi/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-3KtA5L/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-zKgaZr/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-85OHYF/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-mVEBvo/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-90L2FE/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-4UQwOX/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-gOnExm/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-2gpghI/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-Af6SGO/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-nRF1b3/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-pUGfSW/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-nAseKG/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-3FoLve/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-CdAI16/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-htLQb0/sealed': Is a directory
+rm: cannot remove '.tmp/claude-eval-Y3FRY2/sealed': Is a directory

@@ -9,6 +9,12 @@ difference (Δ) is what the plugin contributed.
 - Agent model: `claude-sonnet-5-5`. Judge: `claude-sonnet-5-5`. Both pinned.
 - Graders are frozen before each full run. Every change is logged below.
 
+**Results:** [docs/RESULTS.md](docs/RESULTS.md). In short: superpowers reliably adds
+TDD discipline and question-first brainstorming. It adds nothing measurable on
+debugging, verification, or review pushback, where the no-plugin baseline already
+scores 1.00. It costs 1.33x per task. Method: [docs/METHODOLOGY.md](docs/METHODOLOGY.md).
+Procedure: [docs/WORKFLOW.md](docs/WORKFLOW.md).
+
 ## Cases
 
 Twelve cases: seven positive (a skill's core claim), four negative counterparts
