@@ -1,0 +1,25 @@
+schema_version: "1.1"
+name: brainstorm-vague-build
+description: brainstorming - on a vague build request, does the agent ask before writing code? Measures the advertised behavior shift, not output quality.
+tags: [superpowers, brainstorming]
+plugins: ["../../superpowers"]
+execution:
+  max_turns: 40
+  timeout_seconds: 900
+  allowed_tools: [Read, Glob, Grep, Skill, Agent, TodoWrite, TaskCreate, TaskGet, TaskList, TaskUpdate]
+  prompt: |
+    Build me a small command-line tool for tracking my reading list.
+graders:
+  - name: no-code-before-questions
+    type: tool_used
+    tool: Write
+    min: 0
+    max: 0
+    arm: both
+  - name: asks-a-question
+    type: regex
+    pattern: "\\?"
+  - name: skill-fired
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:superpowers:)?brainstorming"'

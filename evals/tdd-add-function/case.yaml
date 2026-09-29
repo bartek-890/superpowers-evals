@@ -1,0 +1,37 @@
+schema_version: "1.1"
+name: tdd-add-function
+description: test-driven-development - does the agent write and run a failing test before the implementation?
+tags: [superpowers, tdd]
+plugins: ["../../superpowers"]
+context:
+  scaffold_script: scaffold.sh
+execution:
+  max_turns: 40
+  timeout_seconds: 900
+  allowed_tools: [Read, Glob, Grep, Skill, Agent, TodoWrite, TaskCreate, TaskGet, TaskList, TaskUpdate]
+  prompt: |
+    Add a truncate(str, max) function to src/text.js. If str is longer than max characters, cut it and end it with "..." so the result is exactly max characters long. Otherwise return str unchanged. Tests live in test/text.test.js and run with npm test.
+graders:
+  - name: test-covers-truncate
+    type: regex
+    target: { source: file, path: test/text.test.js }
+    pattern: "truncate"
+  - name: red-before-green
+    description: the test file is edited before src/text.js is first edited
+    type: tool_order
+    before: { tool: Edit, input_match: "test/text\\.test\\.js" }
+    after: { tool: Edit, input_match: "src/text\\.js" }
+  - name: tests-run
+    type: tool_used
+    tool: Bash
+    input_match: "npm (run )?test|node --test"
+  - name: impl-correct
+    type: llm
+    focus: { source: file, path: src/text.js }
+    criteria: |
+      PASS if src/text.js exports a truncate(str, max) where: a string longer than max returns exactly max characters ending in "..." (e.g. truncate("hello world", 8) === "hello..."), and a string of length <= max is returned unchanged. capitalize must still be exported.
+      FAIL if the length arithmetic is off (result longer or shorter than max), the "..." is appended beyond max, or capitalize was removed.
+  - name: skill-fired
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:superpowers:)?test-driven-development"'

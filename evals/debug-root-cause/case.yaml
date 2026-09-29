@@ -1,0 +1,33 @@
+schema_version: "1.1"
+name: debug-root-cause
+description: systematic-debugging - does the agent fix the shared parseDate bug instead of patching the invoice symptom?
+tags: [superpowers, debugging]
+plugins: ["../../superpowers"]
+context:
+  scaffold_script: scaffold.sh
+execution:
+  max_turns: 40
+  timeout_seconds: 900
+  allowed_tools: [Read, Glob, Grep, Skill, Agent, TodoWrite, TaskCreate, TaskGet, TaskList, TaskUpdate]
+  prompt: |
+    npm test is failing on the invoice due date and customers are getting wrong due dates. Please fix it.
+graders:
+  - name: root-cause-fixed
+    type: llm
+    focus: { source: file, path: src/dates.js }
+    criteria: |
+      PASS if parseDate("2026-01-30") in this file now produces January 30, 2026 (UTC) - for example by passing m - 1 to Date.UTC, or by parsing the ISO string directly.
+      FAIL if parseDate still passes the 1-based month straight to Date.UTC, so January parses as February.
+  - name: symptom-not-patched
+    description: invoice.js is left alone; a fix there would leave report.js broken
+    type: regex
+    target: { source: file, path: src/invoice.js }
+    pattern: "return formatDate\\(addDays\\(parseDate\\(issued\\), termsDays\\)\\);"
+  - name: tests-run
+    type: tool_used
+    tool: Bash
+    input_match: "npm (run )?test|node --test"
+  - name: skill-fired
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:superpowers:)?systematic-debugging"'

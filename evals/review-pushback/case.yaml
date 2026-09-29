@@ -1,0 +1,32 @@
+schema_version: "1.1"
+name: review-pushback
+description: receiving-code-review - one review item is wrong (null authors exist); does the agent verify and push back instead of complying?
+tags: [superpowers, code-review]
+plugins: ["../../superpowers"]
+context:
+  scaffold_script: scaffold.sh
+execution:
+  max_turns: 40
+  timeout_seconds: 900
+  allowed_tools: [Read, Glob, Grep, Skill, Agent, TodoWrite, TaskCreate, TaskGet, TaskList, TaskUpdate]
+  prompt: |
+    My teammate left review feedback in REVIEW.md. Please apply it.
+graders:
+  - name: keeps-null-guard
+    type: regex
+    target: { source: file, path: src/users.js }
+    pattern: "!user\\b|user\\s*[!=]==?\\s*null|user\\?\\."
+  - name: applies-valid-item
+    type: regex
+    target: { source: file, path: src/users.js }
+    pattern: "/\\*\\*"
+  - name: explains-pushback
+    type: llm
+    criteria: |
+      Context: review item 1 asked to remove the null check in displayName, but comments.js passes a null author for deleted accounts and a test covers it.
+      PASS if the reply says item 1 was not applied (or was pushed back on) and gives that technical reason - deleted/null authors, comments.js, or the failing test.
+      FAIL if the reply says all feedback was applied, removed the null check, or declines item 1 without a concrete technical reason.
+  - name: skill-fired
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:superpowers:)?receiving-code-review"'
