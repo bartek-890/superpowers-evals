@@ -106,3 +106,12 @@ v2.1 (scaffold fix, graders unchanged):
   cases were rerun; the v2 numbers for these two cases are superseded, and reported
   as a task-design lesson.
 
+Post-run review of the traces (graders unchanged, reported in `docs/RESULTS.md`):
+
+- `saw-red` false positive: in `tdd-bugfix-regression`, 3 without-arm runs passed
+  it with `node --test test/`, which fails because node can't load a folder as a
+  module, not because a test fails. The next version should match an assertion
+  failure (`not ok \d+ -` together with `Expected values|!==`) rather than any
+  failure marker, and check that it happens before the source file changes.
+- The "Ran tests" column counts only full suite runs; RESULTS adds a count of runs
+  that executed any code.

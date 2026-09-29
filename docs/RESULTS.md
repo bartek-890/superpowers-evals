@@ -20,7 +20,7 @@ total with v1 and all smoke passes.
   tasks.
 - **No negative case regressed.** Superpowers didn't invent problems in a correct
   fix, didn't argue with valid review, and didn't brainstorm when told not to ask.
-- **It costs 1.33× per task and 1.52× the turns on average**, up to 1.63× cost on
+- **It costs 1.33× per task and about 1.5× the turns on average**, up to 1.63× cost on
   debugging. On the control question, 1 of 8 answers leaked skill-routing talk
   ("No other skill applies…").
 
@@ -55,9 +55,18 @@ plugin, 4 of 8 runs edited `src/money.js`, didn't touch the test file, ran nothi
 and reported "I haven't run the code or any tests". Every run's code was correct.
 The difference is whether a test protects it next time: pass^3 is 1.00 against 0.02.
 
+The `saw-red` grader overstates the baseline here. It passed 3 without-arm runs
+(2, 4, 6) that ran `node --test test/`: node treats the folder as one module, fails
+to load it, and prints `# fail 1`. In all three the code was already fixed, so no
+failing regression test was ever seen. Read from the traces, the with-arm saw a
+genuine red assertion (`'$-5.00' !== '-$5.00'`) in 8/8 runs and the without-arm in
+0/8. Graders are frozen, so the table keeps the scored 0.59. Without the false
+positives it would be about 0.50, and Δ about +0.50.
+
 **On `tdd-add-function` only the process moved.** Both arms shipped a correct,
-tested `truncate` 8/8. Only the with-arm reliably saw the test fail first (1.00 vs
-0.56). Whether that is worth 1.41× the cost depends on whether you value the ritual
+tested `truncate` 8/8. Only the with-arm reliably saw the test fail first: 8/8 vs
+1/8 runs. (The table's process column, 1.00 / 0.56, averages `saw-red` with
+`tests-green`, which both arms pass.) Whether that is worth 1.41× the cost depends on whether you value the ritual
 or the result.
 
 **Brainstorming is a pure behavior switch.** With the plugin, 8/8 runs asked
@@ -75,7 +84,25 @@ cost 1.3-1.6× more, and changed only habits:
 - the with-arm ran the test suite in 7/8 review-pushback runs vs 0/8
 - in 8/8 review-valid-feedback runs vs 1/8
 
-`verify-before-commit` fired its skill in only 2/8 runs. The baseline already ran
+The "Ran tests" column counts only full suite runs (`npm test`, `node --test`). In
+the two verification cases the user says "no need to run the test suite", and both
+arms obeyed. But the with-arm more often ran a quick script against the changed
+function instead of reasoning from the code alone. Runs that executed any code
+(`node` or `npm` in a Bash call):
+
+| Case | With | Without |
+| --- | --- | --- |
+| verify-before-claim (v2.1) | 3/8 | 1/8 |
+| verify-correct-fix (v2.1) | 5/8 | 3/8 |
+| review-pushback | 7/8 | 0/8 |
+| review-valid-feedback | 8/8 | 1/8 |
+| debug-root-cause | 8/8 | 8/8 |
+
+So where scores are saturated, the plugin still changes how the agent checks its
+work: it gathers evidence by running code. On these tasks, reading was enough to
+get the same verdict.
+
+`verify-before-commit` fired its skill in only 2/8 runs (1/8 in v2). The baseline already ran
 tests before committing in 8/8.
 
 **One regression-shaped result is judge noise.** `review-pushback` with-arm run 5
@@ -91,6 +118,10 @@ score 0.94. The remaining failure in each arm is a genuine hedge ("I can't call 
 fully verified").
 
 ## Judge audit
+
+Judges were near-unanimous: 1 of 224 `llm` verdicts had a split vote (2 FAIL, 1
+PASS, in the superseded v2 `verify-correct-fix`). Random judge noise is low; the
+open risk is systematic bias, which the audit below checks.
 
 All 12 FAIL verdicts from the reported runs were reviewed against the evidence the
 judge saw (v2: 10, of which 7 were in the superseded `verify-correct-fix`; v2.1: 2).
