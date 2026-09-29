@@ -1,0 +1,266 @@
+Note: --scaffold runs each case's scaffold_script as you. Only use it on case files you (or your org) authored.
+Ablation: defaulting to with-without — a plugin resolved from this path, so each case also runs a no-plugin baseline arm (2× runs) and reports Δ; graders marked with-only (including `tool_used: Skill`) become a plugin-fired indicator rather than part of the score. Pass --ablation none for the previous single-arm run and scoring.
+Plugin under test: "superpowers" version "6.4.2" at "/work/superpowers"
+Ablation: 2 arms × 6 cases (60 runs)
+Concurrency: up to 4 runs in flight (all children share your rate limit; progress lines interleave, results keep case order)
+  brainstorm-vague-build run 3/5 [with]: score 1.00  $0.07
+    ✓ no-code-before-questions (weight 1): Write called 0x (expected 0..0)
+    ✓ asks-a-question (weight 1): matched \?
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  brainstorm-vague-build run 1/5 [with]: score 1.00  $0.07
+    ✓ no-code-before-questions (weight 1): Write called 0x (expected 0..0)
+    ✓ asks-a-question (weight 1): matched \?
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  brainstorm-vague-build run 4/5 [with]: score 1.00  $0.08
+    ✓ no-code-before-questions (weight 1): Write called 0x (expected 0..0)
+    ✓ asks-a-question (weight 1): matched \?
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  brainstorm-vague-build run 2/5 [with]: score 1.00  $0.07
+    ✓ no-code-before-questions (weight 1): Write called 0x (expected 0..0)
+    ✓ asks-a-question (weight 1): matched \?
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  brainstorm-vague-build run 5/5 [with]: score 1.00  $0.07
+    ✓ no-code-before-questions (weight 1): Write called 0x (expected 0..0)
+    ✓ asks-a-question (weight 1): matched \?
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  brainstorm-vague-build run 1/5 [without]: score 0.00  $0.08
+    ✗ no-code-before-questions (weight 1): Write called 1x (expected 0..0)
+    ✗ asks-a-question (weight 1): pattern not found in last_message
+  brainstorm-vague-build run 3/5 [without]: score 0.00  $0.07
+    ✗ no-code-before-questions (weight 1): Write called 1x (expected 0..0)
+    ✗ asks-a-question (weight 1): pattern not found in last_message
+  brainstorm-vague-build run 2/5 [without]: score 0.00  $0.08
+    ✗ no-code-before-questions (weight 1): Write called 1x (expected 0..0)
+    ✗ asks-a-question (weight 1): pattern not found in last_message
+  brainstorm-vague-build run 4/5 [without]: score 0.00  $0.07
+    ✗ no-code-before-questions (weight 1): Write called 1x (expected 0..0)
+    ✗ asks-a-question (weight 1): pattern not found in last_message
+  control-simple-question run 1/5 [with]: score 1.00  $0.05
+    ✓ correct-and-brief (weight 1): judge votes: PASS PASS PASS
+  control-simple-question run 2/5 [with]: score 1.00  $0.05
+    ✓ correct-and-brief (weight 1): judge votes: PASS PASS PASS
+  control-simple-question run 3/5 [with]: score 1.00  $0.05
+    ✓ correct-and-brief (weight 1): judge votes: PASS PASS PASS
+  brainstorm-vague-build run 5/5 [without]: score 0.00  $0.08
+    ✗ no-code-before-questions (weight 1): Write called 1x (expected 0..0)
+    ✗ asks-a-question (weight 1): pattern not found in last_message
+✓ brainstorm-vague-build  with 1.00  without 0.00  Δ +1.00  (10 runs)  $0.75
+  control-simple-question run 5/5 [with]: score 1.00  $0.05
+    ✓ correct-and-brief (weight 1): judge votes: PASS PASS PASS
+  control-simple-question run 4/5 [with]: score 1.00  $0.05
+    ✓ correct-and-brief (weight 1): judge votes: PASS PASS PASS
+  control-simple-question run 1/5 [without]: score 1.00  $0.04
+    ✓ correct-and-brief (weight 1): judge votes: PASS PASS PASS
+  control-simple-question run 3/5 [without]: score 1.00  $0.04
+    ✓ correct-and-brief (weight 1): judge votes: PASS PASS PASS
+  control-simple-question run 2/5 [without]: score 1.00  $0.05
+    ✓ correct-and-brief (weight 1): judge votes: PASS PASS PASS
+  control-simple-question run 5/5 [without]: score 1.00  $0.05
+    ✓ correct-and-brief (weight 1): judge votes: PASS PASS PASS
+  control-simple-question run 4/5 [without]: score 0.00  $0.05
+    ✗ correct-and-brief (weight 1): judge votes: PASS FAIL FAIL
+✓ control-simple-question  with 1.00  without 0.80  Δ +0.20  (10 runs)  $0.49
+  debug-root-cause run 1/5 [with]: score 1.00  $0.10
+    ✓ root-cause-fixed (weight 1): judge votes: PASS PASS PASS
+    ✓ symptom-not-patched (weight 1): matched return formatDate\(addDays\(parseDate\(issued\), termsDays\)\);
+    ✓ tests-green (weight 1): matched # fail 0
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  debug-root-cause run 2/5 [with]: score 1.00  $0.11
+    ✓ root-cause-fixed (weight 1): judge votes: PASS PASS PASS
+    ✓ symptom-not-patched (weight 1): matched return formatDate\(addDays\(parseDate\(issued\), termsDays\)\);
+    ✓ tests-green (weight 1): matched # fail 0
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  debug-root-cause run 4/5 [with]: score 1.00  $0.11
+    ✓ root-cause-fixed (weight 1): judge votes: PASS PASS PASS
+    ✓ symptom-not-patched (weight 1): matched return formatDate\(addDays\(parseDate\(issued\), termsDays\)\);
+    ✓ tests-green (weight 1): matched # fail 0
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  debug-root-cause run 3/5 [with]: score 1.00  $0.12
+    ✓ root-cause-fixed (weight 1): judge votes: PASS PASS PASS
+    ✓ symptom-not-patched (weight 1): matched return formatDate\(addDays\(parseDate\(issued\), termsDays\)\);
+    ✓ tests-green (weight 1): matched # fail 0
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  debug-root-cause run 2/5 [without]: score 1.00  $0.06
+    ✓ root-cause-fixed (weight 1): judge votes: PASS PASS PASS
+    ✓ symptom-not-patched (weight 1): matched return formatDate\(addDays\(parseDate\(issued\), termsDays\)\);
+    ✓ tests-green (weight 1): matched # fail 0
+  debug-root-cause run 1/5 [without]: score 1.00  $0.07
+    ✓ root-cause-fixed (weight 1): judge votes: PASS PASS PASS
+    ✓ symptom-not-patched (weight 1): matched return formatDate\(addDays\(parseDate\(issued\), termsDays\)\);
+    ✓ tests-green (weight 1): matched # fail 0
+  debug-root-cause run 5/5 [with]: score 1.00  $0.11
+    ✓ root-cause-fixed (weight 1): judge votes: PASS PASS PASS
+    ✓ symptom-not-patched (weight 1): matched return formatDate\(addDays\(parseDate\(issued\), termsDays\)\);
+    ✓ tests-green (weight 1): matched # fail 0
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  debug-root-cause run 3/5 [without]: score 1.00  $0.06
+    ✓ root-cause-fixed (weight 1): judge votes: PASS PASS PASS
+    ✓ symptom-not-patched (weight 1): matched return formatDate\(addDays\(parseDate\(issued\), termsDays\)\);
+    ✓ tests-green (weight 1): matched # fail 0
+  debug-root-cause run 4/5 [without]: score 1.00  $0.07
+    ✓ root-cause-fixed (weight 1): judge votes: PASS PASS PASS
+    ✓ symptom-not-patched (weight 1): matched return formatDate\(addDays\(parseDate\(issued\), termsDays\)\);
+    ✓ tests-green (weight 1): matched # fail 0
+  debug-root-cause run 5/5 [without]: score 1.00  $0.06
+    ✓ root-cause-fixed (weight 1): judge votes: PASS PASS PASS
+    ✓ symptom-not-patched (weight 1): matched return formatDate\(addDays\(parseDate\(issued\), termsDays\)\);
+    ✓ tests-green (weight 1): matched # fail 0
+✓ debug-root-cause  with 1.00  without 1.00  Δ 0.00  (10 runs)  $0.88
+  review-pushback run 1/5 [with]: score 1.00  $0.09
+    ✓ keeps-null-guard (weight 1): matched !user\b|user\s*[!=]==?\s*null|user\?\.
+    ✓ applies-valid-item (weight 1): matched /\*\*
+    ✓ explains-pushback (weight 1): judge votes: PASS PASS PASS
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  review-pushback run 3/5 [with]: score 1.00  $0.09
+    ✓ keeps-null-guard (weight 1): matched !user\b|user\s*[!=]==?\s*null|user\?\.
+    ✓ applies-valid-item (weight 1): matched /\*\*
+    ✓ explains-pushback (weight 1): judge votes: PASS PASS PASS
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  review-pushback run 5/5 [with]: score 1.00  $0.09
+    ✓ keeps-null-guard (weight 1): matched !user\b|user\s*[!=]==?\s*null|user\?\.
+    ✓ applies-valid-item (weight 1): matched /\*\*
+    ✓ explains-pushback (weight 1): judge votes: PASS PASS PASS
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  review-pushback run 2/5 [with]: score 1.00  $0.10
+    ✓ keeps-null-guard (weight 1): matched !user\b|user\s*[!=]==?\s*null|user\?\.
+    ✓ applies-valid-item (weight 1): matched /\*\*
+    ✓ explains-pushback (weight 1): judge votes: PASS PASS PASS
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  review-pushback run 4/5 [with]: score 1.00  $0.10
+    ✓ keeps-null-guard (weight 1): matched !user\b|user\s*[!=]==?\s*null|user\?\.
+    ✓ applies-valid-item (weight 1): matched /\*\*
+    ✓ explains-pushback (weight 1): judge votes: PASS PASS PASS
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  review-pushback run 2/5 [without]: score 1.00  $0.06
+    ✓ keeps-null-guard (weight 1): matched !user\b|user\s*[!=]==?\s*null|user\?\.
+    ✓ applies-valid-item (weight 1): matched /\*\*
+    ✓ explains-pushback (weight 1): judge votes: PASS PASS PASS
+  review-pushback run 1/5 [without]: score 1.00  $0.07
+    ✓ keeps-null-guard (weight 1): matched !user\b|user\s*[!=]==?\s*null|user\?\.
+    ✓ applies-valid-item (weight 1): matched /\*\*
+    ✓ explains-pushback (weight 1): judge votes: PASS PASS PASS
+  review-pushback run 3/5 [without]: score 1.00  $0.07
+    ✓ keeps-null-guard (weight 1): matched !user\b|user\s*[!=]==?\s*null|user\?\.
+    ✓ applies-valid-item (weight 1): matched /\*\*
+    ✓ explains-pushback (weight 1): judge votes: PASS PASS PASS
+  review-pushback run 4/5 [without]: score 1.00  $0.07
+    ✓ keeps-null-guard (weight 1): matched !user\b|user\s*[!=]==?\s*null|user\?\.
+    ✓ applies-valid-item (weight 1): matched /\*\*
+    ✓ explains-pushback (weight 1): judge votes: PASS PASS PASS
+  review-pushback run 5/5 [without]: score 1.00  $0.07
+    ✓ keeps-null-guard (weight 1): matched !user\b|user\s*[!=]==?\s*null|user\?\.
+    ✓ applies-valid-item (weight 1): matched /\*\*
+    ✓ explains-pushback (weight 1): judge votes: PASS PASS PASS
+✓ review-pushback  with 1.00  without 1.00  Δ 0.00  (10 runs)  $0.83
+  tdd-add-function run 2/5 [with]: score 1.00  $0.10
+    ✓ test-covers-truncate (weight 1): matched truncate
+    ✓ saw-red (weight 1): matched # fail [1-9]
+    ✓ tests-green (weight 1): matched # fail 0
+    ✓ impl-correct (weight 1): judge votes: PASS PASS PASS
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  tdd-add-function run 1/5 [with]: score 1.00  $0.10
+    ✓ test-covers-truncate (weight 1): matched truncate
+    ✓ saw-red (weight 1): matched # fail [1-9]
+    ✓ tests-green (weight 1): matched # fail 0
+    ✓ impl-correct (weight 1): judge votes: PASS PASS PASS
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  tdd-add-function run 3/5 [with]: score 1.00  $0.10
+    ✓ test-covers-truncate (weight 1): matched truncate
+    ✓ saw-red (weight 1): matched # fail [1-9]
+    ✓ tests-green (weight 1): matched # fail 0
+    ✓ impl-correct (weight 1): judge votes: PASS PASS PASS
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  tdd-add-function run 4/5 [with]: score 1.00  $0.10
+    ✓ test-covers-truncate (weight 1): matched truncate
+    ✓ saw-red (weight 1): matched # fail [1-9]
+    ✓ tests-green (weight 1): matched # fail 0
+    ✓ impl-correct (weight 1): judge votes: PASS PASS PASS
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  tdd-add-function run 1/5 [without]: score 0.75  $0.07
+    ✓ test-covers-truncate (weight 1): matched truncate
+    ✗ saw-red (weight 1): pattern not found in trace
+    ✓ tests-green (weight 1): matched # fail 0
+    ✓ impl-correct (weight 1): judge votes: PASS PASS PASS
+  tdd-add-function run 5/5 [with]: score 1.00  $0.10
+    ✓ test-covers-truncate (weight 1): matched truncate
+    ✓ saw-red (weight 1): matched # fail [1-9]
+    ✓ tests-green (weight 1): matched # fail 0
+    ✓ impl-correct (weight 1): judge votes: PASS PASS PASS
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  tdd-add-function run 2/5 [without]: score 0.75  $0.07
+    ✓ test-covers-truncate (weight 1): matched truncate
+    ✗ saw-red (weight 1): pattern not found in trace
+    ✓ tests-green (weight 1): matched # fail 0
+    ✓ impl-correct (weight 1): judge votes: PASS PASS PASS
+  tdd-add-function run 5/5 [without]: score 0.75  $0.07
+    ✓ test-covers-truncate (weight 1): matched truncate
+    ✗ saw-red (weight 1): pattern not found in trace
+    ✓ tests-green (weight 1): matched # fail 0
+    ✓ impl-correct (weight 1): judge votes: PASS PASS PASS
+  tdd-add-function run 3/5 [without]: score 1.00  $0.07
+    ✓ test-covers-truncate (weight 1): matched truncate
+    ✓ saw-red (weight 1): matched # fail [1-9]
+    ✓ tests-green (weight 1): matched # fail 0
+    ✓ impl-correct (weight 1): judge votes: PASS PASS PASS
+  tdd-add-function run 4/5 [without]: score 0.75  $0.07
+    ✓ test-covers-truncate (weight 1): matched truncate
+    ✗ saw-red (weight 1): pattern not found in trace
+    ✓ tests-green (weight 1): matched # fail 0
+    ✓ impl-correct (weight 1): judge votes: PASS PASS PASS
+✓ tdd-add-function  with 1.00  without 0.80  Δ +0.20  (10 runs)  $0.85
+  verify-before-claim run 1/5 [with]: score 1.00  $0.08
+    ✓ does-not-rubber-stamp (weight 1): judge votes: PASS PASS PASS
+    ✓ code-left-for-user-or-fixed (weight 1): matched Math\.round|Math\.floor\(subtotal \* discountPercent / 100\)
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  verify-before-claim run 4/5 [with]: score 1.00  $0.08
+    ✓ does-not-rubber-stamp (weight 1): judge votes: PASS PASS PASS
+    ✓ code-left-for-user-or-fixed (weight 1): matched Math\.round|Math\.floor\(subtotal \* discountPercent / 100\)
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  verify-before-claim run 2/5 [with]: score 1.00  $0.09
+    ✓ does-not-rubber-stamp (weight 1): judge votes: PASS PASS PASS
+    ✓ code-left-for-user-or-fixed (weight 1): matched Math\.round|Math\.floor\(subtotal \* discountPercent / 100\)
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  verify-before-claim run 3/5 [with]: score 1.00  $0.09
+    ✓ does-not-rubber-stamp (weight 1): judge votes: PASS PASS PASS
+    ✓ code-left-for-user-or-fixed (weight 1): matched Math\.round|Math\.floor\(subtotal \* discountPercent / 100\)
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  verify-before-claim run 5/5 [with]: score 1.00  $0.09
+    ✓ does-not-rubber-stamp (weight 1): judge votes: PASS PASS PASS
+    ✓ code-left-for-user-or-fixed (weight 1): matched Math\.round|Math\.floor\(subtotal \* discountPercent / 100\)
+    ✓ skill-fired [with-only, not scored]: Skill called 1x (expected 1..∞)
+  verify-before-claim run 1/5 [without]: score 1.00  $0.06
+    ✓ does-not-rubber-stamp (weight 1): judge votes: PASS PASS PASS
+    ✓ code-left-for-user-or-fixed (weight 1): matched Math\.round|Math\.floor\(subtotal \* discountPercent / 100\)
+  verify-before-claim run 3/5 [without]: score 1.00  $0.06
+    ✓ does-not-rubber-stamp (weight 1): judge votes: PASS PASS PASS
+    ✓ code-left-for-user-or-fixed (weight 1): matched Math\.round|Math\.floor\(subtotal \* discountPercent / 100\)
+  verify-before-claim run 2/5 [without]: score 1.00  $0.07
+    ✓ does-not-rubber-stamp (weight 1): judge votes: PASS PASS PASS
+    ✓ code-left-for-user-or-fixed (weight 1): matched Math\.round|Math\.floor\(subtotal \* discountPercent / 100\)
+  verify-before-claim run 5/5 [without]: score 1.00  $0.06
+    ✓ does-not-rubber-stamp (weight 1): judge votes: PASS PASS PASS
+    ✓ code-left-for-user-or-fixed (weight 1): matched Math\.round|Math\.floor\(subtotal \* discountPercent / 100\)
+  verify-before-claim run 4/5 [without]: score 1.00  $0.06
+    ✓ does-not-rubber-stamp (weight 1): judge votes: PASS PASS PASS
+    ✓ code-left-for-user-or-fixed (weight 1): matched Math\.round|Math\.floor\(subtotal \* discountPercent / 100\)
+✓ verify-before-claim  with 1.00  without 1.00  Δ 0.00  (10 runs)  $0.73
+
+CASE                     WITH  W/OUT Δ      RUNS COST    NOTES
+brainstorm-vague-build   1.00  0.00  +1.00  10   $0.75   
+control-simple-question  1.00  0.80  +0.20  10   $0.49   
+debug-root-cause         1.00  1.00  0.00   10   $0.88   
+review-pushback          1.00  1.00  0.00   10   $0.83   
+tdd-add-function         1.00  0.80  +0.20  10   $0.85   
+verify-before-claim      1.00  1.00  0.00   10   $0.73   
+
+6 case(s) · mean Δ +0.23 · 237s · $4.52
+Report: results/2026-09-29T14-42-45Z/report.html
+| Case | With (sd) | W/out (sd) | Δ | Cost with / w/out | Turns with / w/out | Skills fired (with) | Ran tests with / w/out | Sandbox errors |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| brainstorm-vague-build | 1 (0.0) | 0 (0.0) | +1.00 | $0.0742 / $0.0752 | 3 / 3.8 | brainstorming 5/5 | 0/5 / 0/5 | 0 |
+| control-simple-question | 1 (0.0) | 0.8 (0.4472) | +0.20 | $0.0508 / $0.0464 | 1 / 1 | none | 0/5 / 0/5 | 0 |
+| debug-root-cause | 1 (0.0) | 1 (0.0) | +0.00 | $0.1105 / $0.0659 | 9.6 / 5.4 | systematic-debugging 5/5 | 5/5 / 5/5 | 0 |
+| review-pushback | 1 (0.0) | 1 (0.0) | +0.00 | $0.0964 / $0.0691 | 9.4 / 5.8 | receiving-code-review 5/5 | 3/5 / 0/5 | 0 |
+| tdd-add-function | 1 (0.0) | 0.8 (0.1118) | +0.20 | $0.0987 / $0.0705 | 8 / 6 | test-driven-development 5/5 | 5/5 / 5/5 | 0 |
+| verify-before-claim | 1 (0.0) | 1 (0.0) | +0.00 | $0.087 / $0.0594 | 5.6 / 3.2 | verification-before-completion 5/5 | 0/5 / 0/5 | 0 |
+results: results/2026-09-29T14-42-45Z (eval exit 0)

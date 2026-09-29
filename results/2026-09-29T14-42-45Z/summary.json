@@ -1,0 +1,197 @@
+{
+  "claudeVersion": "2.1.284",
+  "costUsd": 4.520273199999999,
+  "partial": false,
+  "cases": [
+    {
+      "case": "brainstorm-vague-build",
+      "delta": 1,
+      "arms": {
+        "with": {
+          "runs": 5,
+          "scoreMean": 1,
+          "scoreSd": 0.0,
+          "costMean": 0.0742,
+          "turnsMean": 3,
+          "errors": [],
+          "runsWithSkill": {
+            "brainstorming": 5
+          },
+          "runsThatRanTests": 0,
+          "toolCallsMean": 1,
+          "runsWithSandboxErrors": 0
+        },
+        "without": {
+          "runs": 5,
+          "scoreMean": 0,
+          "scoreSd": 0.0,
+          "costMean": 0.0752,
+          "turnsMean": 3.8,
+          "errors": [],
+          "runsWithSkill": {},
+          "runsThatRanTests": 0,
+          "toolCallsMean": 2.8,
+          "runsWithSandboxErrors": 0
+        }
+      }
+    },
+    {
+      "case": "control-simple-question",
+      "delta": 0.19999999999999996,
+      "arms": {
+        "with": {
+          "runs": 5,
+          "scoreMean": 1,
+          "scoreSd": 0.0,
+          "costMean": 0.0508,
+          "turnsMean": 1,
+          "errors": [],
+          "runsWithSkill": {},
+          "runsThatRanTests": 0,
+          "toolCallsMean": 0,
+          "runsWithSandboxErrors": 0
+        },
+        "without": {
+          "runs": 5,
+          "scoreMean": 0.8,
+          "scoreSd": 0.4472,
+          "costMean": 0.0464,
+          "turnsMean": 1,
+          "errors": [],
+          "runsWithSkill": {},
+          "runsThatRanTests": 0,
+          "toolCallsMean": 0,
+          "runsWithSandboxErrors": 0
+        }
+      }
+    },
+    {
+      "case": "debug-root-cause",
+      "delta": 0,
+      "arms": {
+        "with": {
+          "runs": 5,
+          "scoreMean": 1,
+          "scoreSd": 0.0,
+          "costMean": 0.1105,
+          "turnsMean": 9.6,
+          "errors": [],
+          "runsWithSkill": {
+            "systematic-debugging": 5
+          },
+          "runsThatRanTests": 5,
+          "toolCallsMean": 7.6,
+          "runsWithSandboxErrors": 0
+        },
+        "without": {
+          "runs": 5,
+          "scoreMean": 1,
+          "scoreSd": 0.0,
+          "costMean": 0.0659,
+          "turnsMean": 5.4,
+          "errors": [],
+          "runsWithSkill": {},
+          "runsThatRanTests": 5,
+          "toolCallsMean": 4.4,
+          "runsWithSandboxErrors": 0
+        }
+      }
+    },
+    {
+      "case": "review-pushback",
+      "delta": 0,
+      "arms": {
+        "with": {
+          "runs": 5,
+          "scoreMean": 1,
+          "scoreSd": 0.0,
+          "costMean": 0.0964,
+          "turnsMean": 9.4,
+          "errors": [],
+          "runsWithSkill": {
+            "receiving-code-review": 5
+          },
+          "runsThatRanTests": 3,
+          "toolCallsMean": 7.4,
+          "runsWithSandboxErrors": 0
+        },
+        "without": {
+          "runs": 5,
+          "scoreMean": 1,
+          "scoreSd": 0.0,
+          "costMean": 0.0691,
+          "turnsMean": 5.8,
+          "errors": [],
+          "runsWithSkill": {},
+          "runsThatRanTests": 0,
+          "toolCallsMean": 4.8,
+          "runsWithSandboxErrors": 0
+        }
+      }
+    },
+    {
+      "case": "tdd-add-function",
+      "delta": 0.19999999999999996,
+      "arms": {
+        "with": {
+          "runs": 5,
+          "scoreMean": 1,
+          "scoreSd": 0.0,
+          "costMean": 0.0987,
+          "turnsMean": 8,
+          "errors": [],
+          "runsWithSkill": {
+            "test-driven-development": 5
+          },
+          "runsThatRanTests": 5,
+          "toolCallsMean": 6,
+          "runsWithSandboxErrors": 0
+        },
+        "without": {
+          "runs": 5,
+          "scoreMean": 0.8,
+          "scoreSd": 0.1118,
+          "costMean": 0.0705,
+          "turnsMean": 6,
+          "errors": [],
+          "runsWithSkill": {},
+          "runsThatRanTests": 5,
+          "toolCallsMean": 5,
+          "runsWithSandboxErrors": 0
+        }
+      }
+    },
+    {
+      "case": "verify-before-claim",
+      "delta": 0,
+      "arms": {
+        "with": {
+          "runs": 5,
+          "scoreMean": 1,
+          "scoreSd": 0.0,
+          "costMean": 0.087,
+          "turnsMean": 5.6,
+          "errors": [],
+          "runsWithSkill": {
+            "verification-before-completion": 5
+          },
+          "runsThatRanTests": 0,
+          "toolCallsMean": 3.6,
+          "runsWithSandboxErrors": 0
+        },
+        "without": {
+          "runs": 5,
+          "scoreMean": 1,
+          "scoreSd": 0.0,
+          "costMean": 0.0594,
+          "turnsMean": 3.2,
+          "errors": [],
+          "runsWithSkill": {},
+          "runsThatRanTests": 0,
+          "toolCallsMean": 2.2,
+          "runsWithSandboxErrors": 0
+        }
+      }
+    }
+  ]
+}
