@@ -6,48 +6,56 @@ loaded (skills + its SessionStart hook) and **without** any plugin, and the scor
 difference (Δ) is what the plugin contributed.
 
 - Plugin under test: `superpowers/` submodule, pinned to v6.4.2 (`8ca22db`).
-- Agent model: `claude-sonnet-5-5`. Judge: `claude-haiku-4-5`. Both pinned.
-- Graders are frozen before the full run. Any change after it is logged below.
+- Agent model: `claude-sonnet-5-5`. Judge: `claude-sonnet-5-5`. Both pinned.
+- Graders are frozen before each full run. Every change is logged below.
 
 ## Cases
 
-Each case targets one skill's core claim. Deterministic graders (regex, tool calls)
-carry most of the score; `llm` graders are kept to short outputs.
+Twelve cases: seven positive (a skill's core claim), four negative counterparts
+(same setup, but the skill's behavior would be wrong), and one control.
+Full rationale: [docs/METHODOLOGY.md](docs/METHODOLOGY.md).
 
-| Case | Skill it probes | What passes |
-| --- | --- | --- |
-| `tdd-add-function` | test-driven-development | A failing test run appears before the passing one ("saw red"); tests end green; `truncate` correct |
-| `debug-root-cause` | systematic-debugging | Shared `parseDate` bug fixed; `invoice.js` symptom left alone; tests end green |
-| `verify-before-claim` | verification-before-completion | Asked to rubber-stamp a fix (and not to run tests), says it still fails |
-| `review-pushback` | receiving-code-review | Rejects the wrong review item with a reason; applies the valid one |
-| `brainstorm-vague-build` | brainstorming | On a vague build request, asks before writing any file (behavior shift, not quality) |
-| `control-simple-question` | none | Short correct git answer; measures the plugin's overhead |
+| Case | Kind | Skill it probes | What passes |
+| --- | --- | --- | --- |
+| `tdd-add-function` | positive | test-driven-development | Test seen failing before the implementation; tests end green; `truncate` correct |
+| `tdd-bugfix-regression` | positive | test-driven-development | Bug fix ships with a regression test that failed first |
+| `debug-root-cause` | positive | systematic-debugging | Shared `parseDate` bug fixed; `invoice.js` symptom left alone; tests end green |
+| `verify-before-claim` | positive | verification-before-completion | Asked to rubber-stamp a broken fix (and not to run tests), says it still fails |
+| `verify-before-commit` | positive | verification-before-completion | Change is correct, committed, and tested before the commit |
+| `review-pushback` | positive | receiving-code-review | Rejects the wrong review item with a reason; applies the valid one |
+| `brainstorm-vague-build` | positive | brainstorming | On a vague build request, asks before writing any file |
+| `verify-correct-fix` | negative | verification-before-completion | The fix is correct: confirms it |
+| `review-valid-feedback` | negative | receiving-code-review | Both review items are valid: applies them without arguing |
+| `no-questions-build` | negative | brainstorming | Fully specified, "don't ask": builds a correct `countWords` |
+| `clear-small-change` | negative | (overhead) | Two-line rename done, nothing else |
+| `control-simple-question` | control | none | Short correct git answer; measures fixed overhead |
 
 `tool_used: Skill` graders are a with-only "did the skill fire" indicator and are
-not part of Δ.
+not part of Δ. Every file-producing case has a `reference/` solution that
+`scripts/check-references.py` checks against the scaffold and the graders.
 
 ## Run it
 
 Cases need Bash (to run `npm test`), and `claude plugin eval` refuses Bash-granting
-runs on macOS hosts with Docker Desktop, so the suite runs in a Linux container:
+runs on macOS hosts with Docker Desktop, so the suite runs in a Linux container.
+Step by step, including smoke runs and audits: [docs/WORKFLOW.md](docs/WORKFLOW.md).
 
 ```bash
 git clone --recursive https://github.com/bartek-890/superpowers-evals
 cd superpowers-evals
 echo "CLAUDE_CODE_OAUTH_TOKEN=..." > .env   # or ANTHROPIC_API_KEY=...
-scripts/run.sh --runs 5 -j 4 --max-cost-usd 25
+caffeinate -i scripts/run.sh --runs 8 -j 6 --max-cost-usd 25   # caffeinate: macOS only
 ```
 
-Each run writes `results/<timestamp>/` with `aggregate-result.json`, `report.html`,
-every raw trace under `traces/<case>/<arm>-<n>.jsonl`, and `summary.md` /
-`summary.json` (per-arm score mean and sd, cost, turns, which skills fired, how
-often tests were run, computed from the traces by `scripts/collect.py`).
+Each run writes `results/<timestamp>/`:
 
-Test outcomes are graded from node's own summary in the trace (`# fail 0`,
-`# fail N`), not from "a Bash call happened": an early smoke pass showed Bash
-calls can fail inside a misconfigured sandbox while a tool-call grader still passes.
-`scripts/collect.py` also counts sandbox errors per run so a broken environment
-is visible in `summary.md`.
+- `aggregate-result.json` and `report.html` (from `claude plugin eval`)
+- `traces/<case>/<arm>-<n>.jsonl`, every raw transcript
+- `summary.md` / `summary.json`: score, outcome vs process pass rates, pass@3 /
+  pass^3, Wilson and bootstrap 95% intervals, cost, turns, skills fired, test runs,
+  and errors, per arm
+- `judge-audit.md`: every judge verdict with the evidence it saw, for human
+  spot-checks
 
 ## Change log
 
@@ -80,3 +88,15 @@ v2 (after reviewing current eval practice, see `docs/METHODOLOGY.md`):
   Wilson and bootstrap 95% intervals, and writes `judge-audit.md`.
 
 v2 graders frozen at the commit that adds this line. Any later change is listed below.
+
+v2 full run: `results/2026-09-29T14-57-41Z/` (12 cases x 8 runs, $14.40).
+
+v2.1 (scaffold fix, graders unchanged):
+
+- `verify-before-claim` and `verify-correct-fix` committed the user's "fix" in the
+  initial commit, so the prompt ("I just fixed...") contradicted an empty `git diff`,
+  and agents in both arms reasonably refused to confirm. The scaffolds now commit the
+  buggy version and leave the fix as an uncommitted change. The `verification`-tagged
+  cases were rerun; the v2 numbers for these two cases are superseded, and reported
+  as a task-design lesson.
+
