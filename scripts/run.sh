@@ -11,12 +11,12 @@ out="results/$(date -u +%Y-%m-%dT%H-%M-%SZ)"
 mkdir -p "$out" .tmp
 docker build -q -t superpowers-evals-runner . >/dev/null
 run() { docker run --rm --env-file .env -e TMPDIR=/work/.tmp \
-  --security-opt seccomp=unconfined --security-opt apparmor=unconfined \
+  --security-opt seccomp=unconfined --security-opt apparmor=unconfined --security-opt systempaths=unconfined \
   -v "$PWD":/work "$@"; }
 set +e
 run superpowers-evals-runner . \
   --trust-plugin --no-publish --keep-temp --scaffold --threshold 0 \
-  --model claude-sonnet-5-5 --judge-model claude-haiku-4-5 \
+  --model claude-sonnet-5-5 --judge-model claude-sonnet-5-5 \
   --allow-tools Bash Write Edit \
   --output-dir "$out" "$@"
 status=$?

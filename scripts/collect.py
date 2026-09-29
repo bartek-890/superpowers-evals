@@ -13,7 +13,7 @@ TEST_CMD = re.compile(r"npm (run )?test|node --test")
 
 
 def trace_stats(path):
-    skills, test_runs, tool_calls = [], 0, 0
+    skills, test_runs, tool_calls, sandbox_errors = [], 0, 0, 0
     if not path or not os.path.exists(path):
         return None
     for line in open(path, encoding="utf-8"):
@@ -23,6 +23,8 @@ def trace_stats(path):
             continue
         msg = m.get("message") if isinstance(m, dict) else None
         content = msg.get("content") if isinstance(msg, dict) else None
+        if "bwrap:" in line or "sandbox" in line and "Operation not permitted" in line:
+            sandbox_errors += 1
         if not isinstance(content, list):
             continue
         for b in content:
@@ -34,7 +36,8 @@ def trace_stats(path):
                 skills.append(str(inp.get("skill", "")).split(":")[-1])
             if b.get("name") == "Bash" and TEST_CMD.search(str(inp.get("command", ""))):
                 test_runs += 1
-    return {"skills": skills, "testRuns": test_runs, "toolCalls": tool_calls}
+    return {"skills": skills, "testRuns": test_runs, "toolCalls": tool_calls,
+            "sandboxErrors": sandbox_errors}
 
 
 def mean(xs):
@@ -75,12 +78,13 @@ def main(results_dir):
                 "runsWithSkill": skill_counts,
                 "runsThatRanTests": sum(1 for s in known if s["testRuns"] > 0),
                 "toolCallsMean": mean([s["toolCalls"] for s in known]),
+                "runsWithSandboxErrors": sum(1 for s in known if s["sandboxErrors"]),
             }
         summary["cases"].append(row)
     json.dump(summary, open(os.path.join(results_dir, "summary.json"), "w"), indent=2)
 
-    lines = ["| Case | With (sd) | W/out (sd) | Δ | Cost with / w/out | Turns with / w/out | Skills fired (with) | Ran tests with / w/out |",
-             "| --- | --- | --- | --- | --- | --- | --- | --- |"]
+    lines = ["| Case | With (sd) | W/out (sd) | Δ | Cost with / w/out | Turns with / w/out | Skills fired (with) | Ran tests with / w/out | Sandbox errors |",
+             "| --- | --- | --- | --- | --- | --- | --- | --- | --- |"]
     for row in summary["cases"]:
         w, o = row["arms"].get("with", {}), row["arms"].get("without", {})
         fired = ", ".join(f"{k} {v}/{w['runs']}" for k, v in sorted(w.get("runsWithSkill", {}).items())) or "none"
@@ -89,7 +93,8 @@ def main(results_dir):
             f"| {row['case']} | {w.get('scoreMean')} ({w.get('scoreSd')}) | {o.get('scoreMean')} ({o.get('scoreSd')}) "
             f"| {'' if d is None else f'{d:+.2f}'} | ${w.get('costMean')} / ${o.get('costMean')} "
             f"| {w.get('turnsMean')} / {o.get('turnsMean')} | {fired} "
-            f"| {w.get('runsThatRanTests')}/{w.get('runs')} / {o.get('runsThatRanTests')}/{o.get('runs')} |")
+            f"| {w.get('runsThatRanTests')}/{w.get('runs')} / {o.get('runsThatRanTests')}/{o.get('runs')} "
+            f"| {w.get('runsWithSandboxErrors', 0) + o.get('runsWithSandboxErrors', 0)} |")
     open(os.path.join(results_dir, "summary.md"), "w").write("\n".join(lines) + "\n")
     print("\n".join(lines))
 

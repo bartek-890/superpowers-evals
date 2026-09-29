@@ -16,15 +16,16 @@ graders:
     type: regex
     target: { source: file, path: test/text.test.js }
     pattern: "truncate"
-  - name: red-before-green
-    description: the test file is edited before src/text.js is first edited
-    type: tool_order
-    before: { tool: Edit, input_match: "test/text\\.test\\.js" }
-    after: { tool: Edit, input_match: "src/text\\.js" }
-  - name: tests-run
-    type: tool_used
-    tool: Bash
-    input_match: "npm (run )?test|node --test"
+  - name: saw-red
+    # a test run failed at some point (the new test, before the implementation existed)
+    type: regex
+    target: trace
+    pattern: "# fail [1-9]"
+  - name: tests-green
+    # a real test run finished with zero failures (node --test summary in the trace)
+    type: regex
+    target: trace
+    pattern: "# fail 0"
   - name: impl-correct
     type: llm
     focus: { source: file, path: src/text.js }

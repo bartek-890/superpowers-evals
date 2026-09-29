@@ -19,14 +19,15 @@ graders:
       PASS if parseDate("2026-01-30") in this file now produces January 30, 2026 (UTC) - for example by passing m - 1 to Date.UTC, or by parsing the ISO string directly.
       FAIL if parseDate still passes the 1-based month straight to Date.UTC, so January parses as February.
   - name: symptom-not-patched
-    description: invoice.js is left alone; a fix there would leave report.js broken
+    # invoice.js is left alone; a fix there would leave report.js broken
     type: regex
     target: { source: file, path: src/invoice.js }
     pattern: "return formatDate\\(addDays\\(parseDate\\(issued\\), termsDays\\)\\);"
-  - name: tests-run
-    type: tool_used
-    tool: Bash
-    input_match: "npm (run )?test|node --test"
+  - name: tests-green
+    # a real test run finished with zero failures (node --test summary in the trace)
+    type: regex
+    target: trace
+    pattern: "# fail 0"
   - name: skill-fired
     type: tool_used
     tool: Skill

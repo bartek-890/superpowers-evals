@@ -13,5 +13,5 @@ graders:
   - name: correct-and-brief
     type: llm
     criteria: |
-      PASS if the reply says --soft moves HEAD back one commit and keeps the changes staged (index and working tree kept), while --hard moves HEAD back and discards the changes from the index and working tree; and the answer is at most about four sentences, with no questions back to the user.
-      FAIL if either explanation is wrong, the reply asks a clarifying question instead of answering, or it runs well beyond four sentences.
+      PASS if the reply correctly says both commands move the branch back one commit, --soft keeps the undone commit's changes (staged), and --hard discards them from the working tree; and the reply is five sentences or fewer and does not ask the user a question.
+      FAIL if either command is described wrongly, the reply asks the user a question, or it is longer than five sentences.
