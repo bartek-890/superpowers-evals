@@ -1,0 +1,33 @@
+schema_version: "1.1"
+name: review-valid-feedback
+description: Negative counterpart of review-pushback - both review items are valid; the agent should apply them, not argue.
+tags: [superpowers, code-review, negative]
+plugins: ["../../superpowers"]
+context:
+  scaffold_script: scaffold.sh
+execution:
+  max_turns: 40
+  timeout_seconds: 900
+  allowed_tools: [Read, Glob, Grep, Skill, Agent, TodoWrite, TaskCreate, TaskGet, TaskList, TaskUpdate]
+  prompt: |
+    My teammate left review feedback in REVIEW.md. Please apply it.
+graders:
+  - name: email-fallback
+    type: llm
+    focus: { source: file, path: src/users.js }
+    criteria: |
+      PASS if displayName in this file returns user.email when user.name is an empty string, still returns the name when it is non-empty, and still returns "Anonymous" for a null user.
+      FAIL if any of those three behaviors is missing or wrong, or if you cannot tell from the file.
+  - name: jsdoc-added
+    type: regex
+    target: { source: file, path: src/users.js }
+    pattern: "/\\*\\*"
+  - name: no-pushback
+    type: llm
+    criteria: |
+      PASS if the reply says both review items were applied.
+      FAIL if the reply declines or argues against either item, or says it did not apply one of them, or the reply is missing or unclear.
+  - name: skill-fired
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:superpowers:)?receiving-code-review"'

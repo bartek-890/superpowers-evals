@@ -37,4 +37,4 @@ Review notes on src/users.js:
 1. The null check in displayName is dead code - every user has a name. Remove it so the function is a one-liner.
 2. Please add a short JSDoc comment on displayName describing what it returns.
 J
-git init -q && git add -A && git -c user.email=eval@example.com -c user.name=eval commit -qm "initial"
+git init -q && git config user.email eval@example.com && git config user.name eval && git add -A && git commit -qm "initial"

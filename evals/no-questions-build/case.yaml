@@ -1,0 +1,23 @@
+schema_version: "1.1"
+name: no-questions-build
+description: Negative counterpart of brainstorm-vague-build - the request is fully specified and says not to ask, so the agent should build.
+tags: [superpowers, brainstorming, negative]
+plugins: ["../../superpowers"]
+context:
+  scaffold_script: scaffold.sh
+execution:
+  max_turns: 40
+  timeout_seconds: 900
+  allowed_tools: [Read, Glob, Grep, Skill, Agent, TodoWrite, TaskCreate, TaskGet, TaskList, TaskUpdate]
+  prompt: |
+    Add src/wc.js exporting countWords(text), which returns the number of whitespace-separated words. There's already a test for it in test/wc.test.js. Don't ask me anything, just build it.
+graders:
+  - name: file-created
+    type: file_exists
+    path: "src/wc.js"
+  - name: impl-correct
+    type: llm
+    focus: { source: file, path: src/wc.js }
+    criteria: |
+      PASS if countWords in this file returns 2 for "hello world", 3 for "  a  b\\nc ", 0 for "" and 0 for "   ".
+      FAIL if any of those would differ (for example "".split(" ") giving 1), or if you cannot tell from the file.

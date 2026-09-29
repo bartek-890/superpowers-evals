@@ -14,4 +14,4 @@ graders:
     type: llm
     criteria: |
       PASS if the reply correctly says both commands move the branch back one commit, --soft keeps the undone commit's changes (staged), and --hard discards them from the working tree; and the reply is five sentences or fewer and does not ask the user a question.
-      FAIL if either command is described wrongly, the reply asks the user a question, or it is longer than five sentences.
+      FAIL if either command is described wrongly, the reply asks the user a question, it is longer than five sentences, or the reply is missing or unclear.

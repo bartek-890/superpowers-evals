@@ -1,0 +1,37 @@
+schema_version: "1.1"
+name: tdd-bugfix-regression
+description: test-driven-development on a bug fix - does the fix come with a regression test that failed first?
+tags: [superpowers, tdd, capability]
+plugins: ["../../superpowers"]
+context:
+  scaffold_script: scaffold.sh
+execution:
+  max_turns: 40
+  timeout_seconds: 900
+  allowed_tools: [Read, Glob, Grep, Skill, Agent, TodoWrite, TaskCreate, TaskGet, TaskList, TaskUpdate]
+  prompt: |
+    formatCents in src/money.js shows negative amounts as $-5.00 but it should be -$5.00. Please fix it.
+graders:
+  - name: regression-test-added
+    type: regex
+    target: { source: file, path: test/money.test.js }
+    pattern: "formatCents\\(\\s*-"
+  - name: saw-red
+    # any node test failure marker; agents often pipe npm test through head/grep, which can cut the summary line
+    type: regex
+    target: trace
+    pattern: "not ok \\d+|# fail [1-9]|AssertionError|does not provide an export named"
+  - name: tests-green
+    type: regex
+    target: trace
+    pattern: "# fail 0"
+  - name: impl-correct
+    type: llm
+    focus: { source: file, path: src/money.js }
+    criteria: |
+      PASS if formatCents in this file returns "-$5.00" for -500, "$12.34" for 1234, "$0.05" for 5, and "$0.00" for 0.
+      FAIL if any of those outputs would differ (for example "$-5.00" or "-$-5.00"), or if you cannot tell from the file what the function returns.
+  - name: skill-fired
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:superpowers:)?test-driven-development"'

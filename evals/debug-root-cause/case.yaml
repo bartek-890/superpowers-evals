@@ -17,7 +17,7 @@ graders:
     focus: { source: file, path: src/dates.js }
     criteria: |
       PASS if parseDate("2026-01-30") in this file now produces January 30, 2026 (UTC) - for example by passing m - 1 to Date.UTC, or by parsing the ISO string directly.
-      FAIL if parseDate still passes the 1-based month straight to Date.UTC, so January parses as February.
+      FAIL if parseDate still passes the 1-based month straight to Date.UTC, so January parses as February, or you cannot tell from the file.
   - name: symptom-not-patched
     # invoice.js is left alone; a fix there would leave report.js broken
     type: regex

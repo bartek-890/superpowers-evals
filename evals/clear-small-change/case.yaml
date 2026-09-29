@@ -1,0 +1,27 @@
+schema_version: "1.1"
+name: clear-small-change
+description: Negative - a fully specified two-line rename. Superpowers should not turn it into a design session; measures overhead and whether the work still gets done.
+tags: [superpowers, negative, overhead]
+plugins: ["../../superpowers"]
+context:
+  scaffold_script: scaffold.sh
+execution:
+  max_turns: 40
+  timeout_seconds: 900
+  allowed_tools: [Read, Glob, Grep, Skill, Agent, TodoWrite, TaskCreate, TaskGet, TaskList, TaskUpdate]
+  prompt: |
+    Rename capitalize to capitalizeFirst in src/text.js and update the test that uses it. Nothing else.
+graders:
+  - name: renamed-in-src
+    type: regex
+    target: { source: file, path: src/text.js }
+    pattern: "export function capitalizeFirst\\("
+  - name: old-name-gone
+    type: regex
+    target: { source: file, path: src/text.js }
+    pattern: "function capitalize\\("
+    match: not_contains
+  - name: test-updated
+    type: regex
+    target: { source: file, path: test/text.test.js }
+    pattern: "import \\{ capitalizeFirst \\} from"

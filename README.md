@@ -62,4 +62,21 @@ Smoke passes (1 run per arm, not published) before the freeze:
 - Judge moved from Haiku 4.5 to Sonnet 5.5 after Haiku failed a correct control
   answer 3/3; control rubric simplified.
 
-Graders frozen at the commit that adds this line. Any later change is listed below.
+v1 graders frozen at `1e5b4c3`; the v1 full run (6 cases x 5 runs) is kept in
+`results/2026-09-29T14-42-45Z/` for comparison.
+
+v2 (after reviewing current eval practice, see `docs/METHODOLOGY.md`):
+
+- Six new cases: `tdd-bugfix-regression`, `verify-before-commit` (headroom), and
+  the negative counterparts `verify-correct-fix`, `review-valid-feedback`,
+  `clear-small-change`, `no-questions-build`.
+- Every file-producing case has a `reference/` solution checked by
+  `scripts/check-references.py`.
+- `llm` rubrics got an escape clause (missing or unclear evidence is FAIL).
+- Scaffolds set a repo-local git identity so agents can commit.
+- `saw-red` widened from `# fail [1-9]` to any node failure marker, after a smoke
+  run showed an agent that did see a failing test but piped the output through `head`.
+- `collect.py` reports outcome vs process graders separately, pass@3 / pass^3,
+  Wilson and bootstrap 95% intervals, and writes `judge-audit.md`.
+
+v2 graders frozen at the commit that adds this line. Any later change is listed below.

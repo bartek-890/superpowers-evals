@@ -18,4 +18,4 @@ test('capitalize uppercases the first letter', () => {
   assert.equal(capitalize('hello'), 'Hello');
 });
 J
-git init -q && git add -A && git -c user.email=eval@example.com -c user.name=eval commit -qm "initial"
+git init -q && git config user.email eval@example.com && git config user.name eval && git add -A && git commit -qm "initial"

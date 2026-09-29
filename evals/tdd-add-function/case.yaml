@@ -18,9 +18,10 @@ graders:
     pattern: "truncate"
   - name: saw-red
     # a test run failed at some point (the new test, before the implementation existed)
+    # any node test failure marker; agents often pipe npm test through head/grep, which can cut the summary line
     type: regex
     target: trace
-    pattern: "# fail [1-9]"
+    pattern: "not ok \\d+|# fail [1-9]|AssertionError|does not provide an export named"
   - name: tests-green
     # a real test run finished with zero failures (node --test summary in the trace)
     type: regex
@@ -31,7 +32,7 @@ graders:
     focus: { source: file, path: src/text.js }
     criteria: |
       PASS if src/text.js exports a truncate(str, max) where: a string longer than max returns exactly max characters ending in "..." (e.g. truncate("hello world", 8) === "hello..."), and a string of length <= max is returned unchanged. capitalize must still be exported.
-      FAIL if the length arithmetic is off (result longer or shorter than max), the "..." is appended beyond max, or capitalize was removed.
+      FAIL if the length arithmetic is off (result longer or shorter than max), the "..." is appended beyond max, capitalize was removed, or you cannot tell from the file what truncate returns.
   - name: skill-fired
     type: tool_used
     tool: Skill

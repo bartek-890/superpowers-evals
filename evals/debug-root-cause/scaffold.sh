@@ -45,4 +45,4 @@ test('net-14 invoice issued Jan 30 is due Feb 13', () => {
   assert.equal(dueDate('2026-01-30', 14), '2026-02-13');
 });
 J
-git init -q && git add -A && git -c user.email=eval@example.com -c user.name=eval commit -qm "initial"
+git init -q && git config user.email eval@example.com && git config user.name eval && git add -A && git commit -qm "initial"
